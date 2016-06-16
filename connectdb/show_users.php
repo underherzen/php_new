@@ -12,16 +12,15 @@ $stat = $_SESSION["auth"];
  * Time: 15:36
  */
 require 'connectdb.php';
-$mysqli = connectdb::todb();
+$mysqli = connectdb::getInstance()->connect();
 $result = $mysqli->query("SELECT id,
 									 login,
 									 password,
 									 full_name,
 									 date_of_registration
 									 FROM users"
-);
-$rows = $result->fetch_assoc();
-
+)or die("ERROR: ".mysql_error());
+$rows = $result->fetch(PDO::FETCH_ASSOC);
 if(!empty($rows))
     do {
         echo "<table>";
@@ -37,4 +36,4 @@ if(!empty($rows))
         echo "<tr><td>Дата регистрации: </td> <td><b>" . $rows['date_of_registration'] . "</b></td></tr></table><br>"	;
         //echo "</hr>";
 //	$rows = $result->fetch_assoc();
-    }	while($rows = $result->fetch_assoc());
+    }	while($rows = $result->fetch(PDO::FETCH_ASSOC));

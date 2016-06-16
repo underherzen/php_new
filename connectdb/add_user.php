@@ -1,7 +1,7 @@
 
 <?php
 require 'connectdb.php';
-$mysqli = connectdb::todb();
+$mysqli = connectdb::getInstance()->connect();
 	if(
         !empty($_POST['user_name']) &&
         !empty($_POST['user_login']) &&

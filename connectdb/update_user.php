@@ -6,7 +6,7 @@ require 'connectdb.php';
         !empty($_POST['update_user_login']) &&
         !empty($_POST['update_user_password'])
     ) {
-        $mysqli_update_user = connectdb::todb();
+        $mysqli_update_user = connectdb::getInstance()->connect();
         $name = $_POST['update_user_name'];
         $login = $_POST['update_user_login'];
         $password = $_POST['update_user_password'];

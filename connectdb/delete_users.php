@@ -1,6 +1,6 @@
 <?php
 require 'connectdb.php';
-$mysqli = connectdb::todb();
+$mysqli = connectdb::getInstance()->connect();
 $mysss = $mysqli;
 
 function returnGlob()
